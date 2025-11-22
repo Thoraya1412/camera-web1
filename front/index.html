@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Camera | Home + Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+  body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), url(./imge/rm373batch4-15-copy-scaled.webp) no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+  }
+
+  .dashboard-card {
+    background: rgba(255, 255, 255, 0.88);
+    color: #000;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .hero-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 10px;
+    padding: 40px 20px;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .card {
+    background-color: #fff;
+    color: #000;
+  }
+.form-label{
+  color: #000;
+}
+  .table {
+    color: #000;
+  }
+
+  .table-dark th {
+    background-color: #343a40;
+    color: #fff;
+  }
+
+  footer {
+    background-color: #111;
+    color: white;
+  }
+
+  a.text-white:hover {
+    text-decoration: underline;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="imge/ChatGPT Image Jul 20, 2025, 01_23_12 PM.png" alt="Logo" width="40" height="40" class="me-2" />
+      Smart Camera
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contant.html">Contact</a></li>
+      </ul>
+
+      <!-- Buttons for auth -->
+   <div id="guest-buttons">
+  <a href="login.html" class="btn btn-outline-light">Login</a>
+ <a href="signup.html" class="btn btn-primary">Sign Up</a>
+</div>
+
+<div id="user-buttons" style="display: none;">
+  <a href="profile.html" class="btn btn-outline-light">Profile</a>
+  <button id="logoutBtn" class="btn btn-primary ms-2">Logout</button>
+</div>
+
+    </div>
+  </div>
+</nav>
+
+
+<!-- Home Section -->
+<div class="container">
+  <div class="hero-section mt-4">
+    <h1>Welcome to Smart Camera System</h1>
+    <p class="lead">Monitor your fake camera detections and stay secure 🔒</p>
+  </div>
+</div>
+
+<!-- Dashboard Section -->
+<div class="container my-5">
+  <h2 class="mb-4 text-white">Dashboard</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="dashboard-card text-center">
+        <h5>Total Cameras</h5>
+        <p class="fs-4 text-primary" id="cameraCount">6</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="dashboard-card text-center">
+        <h5>Last Login</h5>
+        <p class="fs-5 text-success">2025-07-19 22:10</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="dashboard-card text-center">
+        <h5>Fake Alerts</h5>
+        <p class="fs-4 text-danger">2</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Buttons -->
+  <div class="d-flex justify-content-end mb-3">
+    <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#addCameraModal">➕ Add Camera</button>
+    <button class="btn btn-secondary">🔁 Refresh</button>
+  </div>
+
+  <!-- Camera Table -->
+  <div class="dashboard-card">
+    <h5>Fake Camera Records</h5>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover" id="cameraTable">
+        <thead class="table-dark">
+          <tr>
+            <th>Camera ID</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Last Detected</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>CAM001</td>
+            <td>Gate A</td>
+            <td class="text-danger">Fake</td>
+            <td>2025-07-19</td>
+          </tr>
+          <tr>
+            <td>CAM002</td>
+            <td>Entrance</td>
+            <td class="text-danger">Fake</td>
+            <td>2025-07-18</td>
+          </tr>
+          <tr>
+            <td>CAM003</td>
+            <td>Parking</td>
+            <td class="text-success">Active</td>
+            <td>2025-07-17</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="row justify-content-center g-4">
+    
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="imge/ae8bf58b0f33896cbc989dd95260f78893adc7405c41c1ef6ea28491398c5abd_grande.webp"
+             class="card-img-top img-fluid"
+             alt="Camera 1"
+             style="height: 200px; object-fit: cover;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Camera 1</h5>
+          <p class="card-text">High-resolution outdoor camera.</p>
+          <a href="camera-details.html?id=1" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="imge/41SRRCEBNSL.jpg"
+             class="card-img-top img-fluid"
+             alt="Camera 2"
+             style="height: 200px; object-fit: cover;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Camera 2</h5>
+          <p class="card-text">Night vision and motion detection.</p>
+          <a href="camera-details.html?id=2" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="card h-100 shadow">
+        <img src="imge/security-cameras-250x250.webp"
+             class="card-img-top img-fluid"
+             alt="Camera 3"
+             style="height: 200px; object-fit: cover;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Camera 3</h5>
+          <p class="card-text">Compact camera for indoor use.</p>
+          <a href="camera-details.html?id=3" class="btn btn-primary">View Details</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+  <div id="successMessage" class="alert alert-success mt-3 text-center d-none">
+    Thank you! We'll get back to you soon.
+  </div>
+</section>
+
+
+<section class="text-center py-5 my-5" style="background-color: white; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+  <div class="container">
+    <h2 class="mb-3 fw-bold" style="color: black;">Our Security Solutions</h2>
+    <p class="lead text-secondary">
+      Discover how we can help protect your home or business with our advanced surveillance and security systems.
+    </p>
+    <a href="securtey.html" class="btn btn-primary btn-lg mt-4 px-5">Explore Security Systems</a>
+  </div>
+</section>
+
+
+<footer class="bg-dark text-white pt-4 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo and About -->
+      <div class="col-md-4 mb-3">
+        <h5>TechVision</h5>
+        <p>We provide the best smart surveillance solutions for your safety and comfort.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="about.html" class="text-white text-decoration-none" >About Us</a></li>
+          <li><a href="Request a Consultation.html" class="text-white text-decoration-none">Request Consultation</a></li>
+          <li><a href="contant.html" class="text-white text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-4 mb-3">
+        <h5>Contact</h5>
+        <p><i class="bi bi-telephone-fill"></i> +20 123 456 789</p>
+        <p><i class="bi bi-envelope-fill"></i> info@techvision.com</p>
+        <p><i class="bi bi-geo-alt-fill"></i> Cairo, Egypt</p>
+      </div>
+    </div>
+
+    <hr class="border-light">
+
+    <div class="text-center">
+      <p class="mb-0">&copy; 2025 TechVision. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Modal: Add Camera -->
+<div class="modal fade" id="addCameraModal" tabindex="-1" aria-labelledby="addCameraModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="cameraForm">
+        <div class="modal-header">
+          <h5 class="modal-title" style="color: #000;">Add New Camera</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="cameraId" class="form-label">Camera ID</label>
+            <input type="text" class="form-control" id="cameraId" required>
+          </div>
+          <div class="mb-3">
+            <label for="cameraLocation" class="form-label">Location</label>
+            <input type="text" class="form-control" id="cameraLocation" required>
+          </div>
+          <div class="mb-3">
+            <label for="cameraStatus" class="form-label">Status</label>
+            <select class="form-select" id="cameraStatus" required>
+              <option value="Active">Active</option>
+              <option value="Fake">Fake</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="detectedDate" class="form-label">Last Detected</label>
+            <input type="date" class="form-control" id="detectedDate" required>
+          </div>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save Camera</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const cameraForm = document.getElementById('cameraForm');
+    const cameraTable = document.getElementById('cameraTable').querySelector('tbody');
+    const cameraCount = document.getElementById('cameraCount');
+    const successMsg = document.getElementById("successMessage");
+
+  // التحقق من حالة تسجيل الدخول
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+  const guestButtons = document.getElementById("guest-buttons");
+  const userButtons = document.getElementById("user-buttons");
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (isLoggedIn) {
+    guestButtons.style.display = "none";
+    userButtons.style.display = "block";
+  } else {
+    guestButtons.style.display = "block";
+    userButtons.style.display = "none";
+  }
+
+  // تسجيل الخروج
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    });
+  }
+
+
+
+
+    // ✅ عند إرسال نموذج الكاميرا
+    cameraForm?.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const id = document.getElementById('cameraId').value;
+      const location = document.getElementById('cameraLocation').value;
+      const status = document.getElementById('cameraStatus').value;
+      const date = document.getElementById('detectedDate').value;
+
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${id}</td>
+        <td>${location}</td>
+        <td class="${status === 'Fake' ? 'text-danger fw-bold' : 'text-success fw-bold'}">${status}</td>
+        <td>${date}</td>
+      `;
+      cameraTable.appendChild(row);
+
+      cameraCount.textContent = parseInt(cameraCount.textContent) + 1;
+      successMsg.classList.remove("d-none");
+
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addCameraModal'));
+      modal.hide();
+
+      cameraForm.reset();
+    });
+  });
+</script>
+
+
+</body>
+</html>

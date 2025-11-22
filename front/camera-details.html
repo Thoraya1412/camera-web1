@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Camera Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .btn-custom {
+      background-color: #0779eb;
+      color: white;
+      border: none;
+    }
+
+    .btn-custom:hover {
+      background-color: #066cd1;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- محتوى الصفحة -->
+  <div class="container py-5 content">
+    <div id="cameraDetails" class="text-center"></div>
+  </div>
+
+  <!-- الفوتر -->
+  <footer class="bg-dark text-white pt-4 pb-3 mt-auto">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <h5>TechVision</h5>
+          <p>We provide the best smart surveillance solutions for your safety and comfort.</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+            <li><a href="about.html" class="text-white text-decoration-none">About Us</a></li>
+            <li><a href="Request a Consultation.html" class="text-white text-decoration-none">Request Consultation</a></li>
+            <li><a href="contant.html" class="text-white text-decoration-none">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Contact</h5>
+          <p><i class="bi bi-telephone-fill"></i> +20 123 456 789</p>
+          <p><i class="bi bi-envelope-fill"></i> info@techvision.com</p>
+          <p><i class="bi bi-geo-alt-fill"></i> Cairo, Egypt</p>
+        </div>
+      </div>
+      <hr class="border-light">
+      <div class="text-center">
+        <p class="mb-0">&copy; 2025 TechVision. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+       
+ <script>
+  const cameras = [
+    {
+      id: 1,
+      name: "Camera 1",
+      description: "High-resolution outdoor camera. Weather-resistant and provides full HD recording.",
+      image: "imge/ae8bf58b0f33896cbc989dd95260f78893adc7405c41c1ef6ea28491398c5abd_grande.webp",
+      price: "$120",
+      resolution: "1080p Full HD",
+      connectivity: "Wired",
+      features: ["Weather-resistant", "Night vision", "Motion Detection"]
+    },
+    {
+      id: 2,
+      name: "Camera 2",
+      description: "Night vision and motion detection. Perfect for low-light environments.",
+      image: "imge/41SRRCEBNSL.jpg",
+      price: "$95",
+      resolution: "720p HD",
+      connectivity: "Wireless",
+      features: ["Infrared Night Vision", "Motion Detection", "App Control"]
+    },
+    {
+      id: 3,
+      name: "Camera 3",
+      description: "Compact camera for indoor use. Easy installation and Wi-Fi support.",
+      image: "imge/security-cameras-250x250.webp",
+      price: "$75",
+      resolution: "1080p Full HD",
+      connectivity: "Wi-Fi",
+      features: ["Compact Design", "Wi-Fi", "Easy Installation"]
+    }
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"));
+  const camera = cameras.find(cam => cam.id === id);
+
+  if (camera) {
+    const featureList = camera.features.map(f => `<li>${f}</li>`).join("");
+    document.getElementById("cameraDetails").innerHTML = `
+      <div class="card shadow-lg border-0 rounded mx-auto mt-4" style="max-width: 600px;">
+        <img src="${camera.image}" class="card-img-top img-fluid" alt="${camera.name}" style="height: 300px; object-fit: cover;">
+        <div class="card-body">
+          <h3 class="card-title text-center mb-3">${camera.name}</h3>
+          <p class="card-text text-muted text-center">${camera.description}</p>
+          <ul class="list-group list-group-flush mb-3">
+            <li class="list-group-item"><strong>Price:</strong> ${camera.price}</li>
+            <li class="list-group-item"><strong>Resolution:</strong> ${camera.resolution}</li>
+            <li class="list-group-item"><strong>Connectivity:</strong> ${camera.connectivity}</li>
+            <li class="list-group-item"><strong>Features:</strong>
+              <ul class="mb-0">${featureList}</ul>
+            </li>
+          </ul>
+          <div class="text-center">
+             <a href="index.html" class="btn btn-custom">Back to Home</a>
+          </div>
+        </div>
+      </div>
+    `;
+  } else {
+    document.getElementById("cameraDetails").innerHTML = "<p class='text-danger text-center'>Camera not found.</p>";
+  }
+</script>
+
+
+</body>
+</html>
+

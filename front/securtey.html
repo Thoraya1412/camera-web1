@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security Systems</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container py-5">
+  <h1 class="mb-4 text-center">Our Security Systems</h1>
+
+  <div class="row g-4">
+    <!-- System 1 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="imge/door_entry_system_cb.png" class="card-img-top" alt="Basic System" width="300" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Basic Camera System</h5>
+          <p class="card-text">Entry-level system suitable for small homes and offices.</p>
+          <!-- System 1 -->
+<a href="Request a Consultation.html?system=Advanced%20Security%20Setup" class="btn btn-primary">Request this System</a>
+
+<!-- System 2 -->
+
+
+<!-- System 3 -->
+
+
+        </div>
+      </div>
+    </div>
+
+    <!-- System 2 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="imge/hand-activating-smart-home-interface-digital-screen-icons-automation-security-energy-control-hand-activating-smart-380778262.webp" class="card-img-top" alt="Advanced System" width="300" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Advanced Security Setup</h5>
+          <p class="card-text">High-resolution cameras with motion detection and night vision.</p>
+         <a href="Request a Consultation.html?system=Advanced%20Security%20Setup" class="btn btn-primary">Request this System</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- System 3 -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="imge/smart-home-technology-2.jpg" class="card-img-top" alt="Smart System" width="300" height="200">
+        <div class="card-body">
+          <h5 class="card-title">Smart Home Integration</h5>
+          <p class="card-text">AI-powered system that integrates with smart home devices.</p>
+          
+<a href="Request a Consultation.html?system=Advanced%20Security%20Setup" class="btn btn-primary">Request this System</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="mt-4 text-center">
+    <a href="index.html" class="btn btn-secondary" style="background-color: #0779eb;">Back to Home</a>
+  </div>
+</div>
+
+
+<footer class="bg-dark text-white pt-4 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo and About -->
+      <div class="col-md-4 mb-3">
+        <h5>TechVision</h5>
+        <p>We provide the best smart surveillance solutions for your safety and comfort.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-md-4 mb-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="about.html" class="text-white text-decoration-none" >About Us</a></li>
+          <li><a href="Request a Consultation.html" class="text-white text-decoration-none">Request Consultation</a></li>
+          <li><a href="contant.html" class="text-white text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-4 mb-3">
+        <h5>Contact</h5>
+        <p><i class="bi bi-telephone-fill"></i> +20 123 456 789</p>
+        <p><i class="bi bi-envelope-fill"></i> info@techvision.com</p>
+        <p><i class="bi bi-geo-alt-fill"></i> Cairo, Egypt</p>
+      </div>
+    </div>
+
+    <hr class="border-light">
+
+    <div class="text-center">
+      <p class="mb-0">&copy; 2025 TechVision. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const buttons = document.querySelectorAll('.request-btn');
+  const systemInput = document.getElementById('systemType');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      systemInput.value = btn.getAttribute('data-system');
+      window.scrollTo({ top: document.getElementById('consultation-form').offsetTop - 100, behavior: 'smooth' });
+    });
+  });
+
+  document.getElementById('consultation-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert("Your request has been submitted. We'll contact you soon!");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
